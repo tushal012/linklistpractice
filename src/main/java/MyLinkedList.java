@@ -20,7 +20,7 @@ public class MyLinkedList {
         size++;
         return true;
     }
-    
+
     public int size(){
         return size;
     }
