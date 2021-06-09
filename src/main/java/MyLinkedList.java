@@ -1,44 +1,58 @@
 
 
 public class MyLinkedList {
-    private Node head;
-    int size =0;
+    public INode head;
+    public INode tail;
 
-    public boolean add(Integer data){
-        Node newNode = new Node(data);
-        if(head == null){
-            head = newNode;
-            size++;
-            return true;
-        }
-        Node temp = head;
-        while(temp.next != null){
-            temp = temp.next;
-
-        }
-        temp.next = newNode;
-        size++;
-        return true;
+    public MyLinkedList() {
+        this.head = null;
+        this.tail = null;
     }
 
-    public int size(){
-        return size;
-    }
-    public boolean addAtFirst(Integer data) {
-        Node newNode = new Node(data);
-        if (head == null) {
-            head = newNode;
-            return true;
+    public void add(INode newNode) {
+        if (this.tail == null) {
+            this.tail = newNode;
         }
-        newNode.next = head;
-        head = newNode;
-        return true;
-    }
-    public void printValue(){
-        Node temp = head;
-        while(temp.next != null){
-            System.out.println(temp.data);
-            temp = temp.next;
+        if (this.head == null) {
+            this.head = newNode;
+        } else {
+            INode tempNode = this.head;
+            this.head = newNode;
+            this.head.setNext(tempNode);
         }
+    }
+
+    /* @Description insert node into first node, second node and third node. */
+
+    public void insert(INode myNode, INode newNode) {
+        INode tempNode = myNode.getNext();
+        myNode.setNext(newNode);
+        newNode.setNext(tempNode);
+    }
+
+    /* @Description- this is used  to appending the data */
+
+    public void append(INode myNode) {
+        if (this.head == null) {
+            this.head = myNode;
+        }
+        if (this.tail == null) {
+            this.tail = myNode;
+        } else {
+            this.tail.setNext(myNode);
+            this.tail = myNode;
+        }
+    }
+
+    public void printMyNodes() {
+        StringBuffer myNodes = new StringBuffer("My Nodes : ");
+        INode tempNode = head;
+        while (tempNode.getNext() != null) {
+            myNodes.append(tempNode.getKey());
+            if (!tempNode.equals(tail)) myNodes.append("->");
+            tempNode = tempNode.getNext();
+        }
+        myNodes.append(tempNode.getKey());
+        System.out.println(myNodes);
     }
 }
