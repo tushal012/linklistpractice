@@ -1,6 +1,13 @@
 
+
 public class MyNode<K> implements INode<K> {
     private INode next;
+
+public class MyNode<K> {
+    public MyNode next;
+    public boolean data;
+
+
     private K key;
 
     public MyNode(K key) {
