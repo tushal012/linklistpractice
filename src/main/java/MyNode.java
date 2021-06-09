@@ -1,6 +1,8 @@
 
 public class MyNode<K> {
-    private MyNode next;
+    public MyNode next;
+    public boolean data;
+
     private K key;
 
         public MyNode(K key){
